@@ -1,15 +1,5 @@
 # Getting started with a login app with firebase
 This a login app that takes a name input,password, and email which uses firebase OAuth to a create user and compare the password and email.Still in working Progress
 
-## Available Scripts
 
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
