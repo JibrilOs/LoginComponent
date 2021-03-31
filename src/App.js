@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import fire from "./Firebase";
 import "firebase/auth";
 import Login from "./Login";
+import Hero from "./Hero";
 import "./App.css";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
   //handles the password and email that are sent to firebase
   const handleLogin = () => {
     clearErrors();
+
     fire
       .auth()
       .SignInWithEmailAndPassword(email, password)
@@ -85,21 +87,26 @@ function App() {
 
   return (
     <div className="App">
-      <Login
-        user={user}
-        setUser={setUser}
-        email={email}
-        setEmail={setEmail}
-        emailError={emailError}
-        password={password}
-        setPassword={setPassword}
-        passwordError={passwordError}
-        handleLogin={handleLogin}
-        handleSignup={handleSignup}
-        handleLogout={handleLogout}
-        hasAccount={hasAccount}
-        setHasAccount={setHasAccount}
-      />
+    
+      {user ? (
+        <Hero handleLogout={handleLogout} user={user} />
+      ) : (
+        <Login
+          user={user}
+          setUser={setUser}
+          email={email}
+          setEmail={setEmail}
+          emailError={emailError}
+          password={password}
+          setPassword={setPassword}
+          passwordError={passwordError}
+          handleLogin={handleLogin}
+          handleSignup={handleSignup}
+          handleLogout={handleLogout}
+          hasAccount={hasAccount}
+          setHasAccount={setHasAccount}
+        />
+      )}
     </div>
   );
 }

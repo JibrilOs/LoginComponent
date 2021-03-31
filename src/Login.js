@@ -60,7 +60,7 @@ function Login({
         <div className="btnContainer">
           {hasAccount ? (
             <>
-              <button onClick={()   => handleLogin}>Sign In</button>
+              <button onClick={handleLogin}>Sign In</button>
               <p>
                 Don't have an account ?
                 <span onClick={() => setHasAccount(!hasAccount)}>Sign up</span>
@@ -70,7 +70,7 @@ function Login({
             <>
               <button onClick={handleSubmit}>Sign Up</button>{" "}
               <p>
-                Have an account{" "}
+                Have an account
                 <span onClick={() => setHasAccount(!hasAccount)}>Sign in</span>
               </p>
             </>
