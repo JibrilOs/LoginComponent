@@ -60,14 +60,19 @@ function Login({
         <div className="btnContainer">
           {hasAccount ? (
             <>
-              <button>Sign In</button>
+              <button onClick={()   => handleLogin}>Sign In</button>
               <p>
-                Don't have an account ? <span>Sign up</span>
+                Don't have an account ?
+                <span onClick={() => setHasAccount(!hasAccount)}>Sign up</span>
               </p>
             </>
           ) : (
             <>
-              <button>Sign up</button> <p>Have an account</p>
+              <button onClick={handleSubmit}>Sign Up</button>{" "}
+              <p>
+                Have an account{" "}
+                <span onClick={() => setHasAccount(!hasAccount)}>Sign in</span>
+              </p>
             </>
           )}
         </div>
