@@ -1,7 +1,6 @@
 /* eslint-disable default-case */
 import React, { useState, useEffect } from "react";
 import fire from "./Firebase";
-import "firebase/auth";
 import Login from "./Login";
 import Hero from "./Hero";
 import "./App.css";
@@ -32,7 +31,7 @@ function App() {
 
     fire
       .auth()
-      .SignInWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(email, password)
       .catch((err) => {
         switch (err.code) {
           case "auth/invalid-email":
