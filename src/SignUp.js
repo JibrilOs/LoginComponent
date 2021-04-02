@@ -14,6 +14,8 @@ function Login({
   handleLogout,
   hasAccount,
   setHasAccount,
+  name,
+  setName,
 }) {
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -25,27 +27,34 @@ function Login({
     handleSignup();
     return alert("user created");
   };
+  const handleName = (e) => setName(e.target.value);
   return (
     <section className="login">
       <div className="loginContainer">
+        {/* Name start */}
+        <label> Name</label>
+        <input
+          type="text"
+          required
+          autoFocus
+          value={name}
+          placeholder="firstname & surname"
+          onChange={handleName}
+        />
+
+        {/* name End */}
+
         {/*email Start*/}
-        <h1
-          style={{ color: "white", alignSelf: "center", marginBottom: "10px" }}
-        >
-          Sign up
-        </h1>
-        <label>Name</label>
-        <input type="text" required autoFocus />
         <label>Email</label>
         <input
           type="email"
           required
           value={email}
           onChange={handleChangeEmail}
-          autoFocus
         />
         <p className="errorMsg">{emailError}</p>
         {/*email End*/}
+
         {/*Password Start*/}
         <label>Password</label>
         <input
@@ -55,27 +64,26 @@ function Login({
           onChange={handleChangePassword}
         />
         <div className="errorMsg">{passwordError}</div>
-        {/*Password End*/}
-        {/* Button start */}
-        <div className="btn">
-          <button type="submit" onClick={handleSubmit}>
-            create user
-          </button>
-        </div>
-        {/* <div className="btnContainer">
+
+        <div className="btnContainer">
           {hasAccount ? (
             <>
-              <button>Sign In</button>
+              <button onClick={handleLogin}>Login</button>
               <p>
-                Don't have an account ? <span>Sign up</span>
+                Don't have an account ?
+                <span onClick={() => setHasAccount(!hasAccount)}>Sign up</span>
               </p>
             </>
           ) : (
             <>
-              <button>Sign up</button> <p>Have an account</p>
+              <button onClick={handleSubmit}>Sign Up</button>
+              <p>
+                Have an account
+                <span onClick={() => setHasAccount(!hasAccount)}>Login</span>
+              </p>
             </>
           )}
-        </div> */}
+        </div>
       </div>
     </section>
   );
