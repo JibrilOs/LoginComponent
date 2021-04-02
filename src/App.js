@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import {fire, db} from "./Firebase";
 
 import Login from "./Login";
+import Signup from "./SignUp";
 import Hero from "./Hero";
 import "./App.css";
 
@@ -14,7 +15,7 @@ function App() {
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [hasAccount, setHasAccount] = useState(false);
+  const [hasAccount, setHasAccount] = useState(true);
   const clearInputs = () => {
     // setUser("");
     setEmail("");
@@ -94,8 +95,13 @@ clearInputs();
   return (
     <div className="App">
       {user ? (
-        <Hero handleLogout={handleLogout} user={user} email={email} name={name} />
-      ) : (
+        <Hero
+          handleLogout={handleLogout}
+          user={user}
+          email={email}
+          name={name}
+        />
+      ) : hasAccount ? (
         <Login
           user={user}
           setUser={setUser}
@@ -111,7 +117,25 @@ clearInputs();
           hasAccount={hasAccount}
           setHasAccount={setHasAccount}
           name={name}
-          setName={ setName}
+          setName={setName}
+        />
+      ) : (
+        <Signup
+          user={user}
+          setUser={setUser}
+          email={email}
+          setEmail={setEmail}
+          emailError={emailError}
+          password={password}
+          setPassword={setPassword}
+          passwordError={passwordError}
+          handleLogin={handleLogin}
+          handleSignup={handleSignup}
+          handleLogout={handleLogout}
+          hasAccount={hasAccount}
+          setHasAccount={setHasAccount}
+          name={name}
+          setName={setName}
         />
       )}
     </div>

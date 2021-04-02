@@ -32,7 +32,7 @@ function Login({
     <section className="login">
       <div className="loginContainer">
         {/* Name start */}
-        <label> Name</label>
+        {/* <label> Name</label>
         <input
           type="text"
           required
@@ -40,7 +40,7 @@ function Login({
           value={name}
           placeholder="firstname & surname"
           onChange={handleName}
-        />
+        /> */}
 
         {/* name End */}
 

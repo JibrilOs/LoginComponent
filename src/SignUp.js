@@ -1,6 +1,6 @@
 import React from "react";
 
-function Login({
+function Signup({
   user,
   setUser,
   email,
@@ -89,4 +89,4 @@ function Login({
   );
 }
 
-export default Login;
+export default Signup;
