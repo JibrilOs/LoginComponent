@@ -1,12 +1,14 @@
 /* eslint-disable default-case */
 import React, { useState, useEffect } from "react";
-import fire from "./Firebase";
+import {fire, db} from "./Firebase";
+
 import Login from "./Login";
 import Hero from "./Hero";
 import "./App.css";
 
 function App() {
   //Hooks
+  const [name, setName] = useState("");
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -17,6 +19,7 @@ function App() {
     // setUser("");
     setEmail("");
     setPassword("");
+    setName("");
   };
   const clearErrors = () => {
     setEmailError("");
@@ -48,11 +51,13 @@ function App() {
   /// creates a user with password and email
   const handleSignup = () => {
   
-  clearInputs();
+clearInputs();
     fire
 
       .auth()
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(email, password).then(cred=>{
+       db.collection("users").doc(cred.user.uid).set({name})
+      })
       .catch((err) => {
         switch (err.code) {
           case "auth/email-already-in-use":
@@ -74,6 +79,8 @@ function App() {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
         clearInputs();
+      db.collection("users").doc(user.uid).get().then(doc=>    setName(doc.data().name))
+  
         setUser(user);
       } else {
         setUser("");
@@ -86,9 +93,8 @@ function App() {
 
   return (
     <div className="App">
-    
       {user ? (
-        <Hero handleLogout={handleLogout} user={user} />
+        <Hero handleLogout={handleLogout} user={user} email={email} name={name} />
       ) : (
         <Login
           user={user}
@@ -104,6 +110,8 @@ function App() {
           handleLogout={handleLogout}
           hasAccount={hasAccount}
           setHasAccount={setHasAccount}
+          name={name}
+          setName={ setName}
         />
       )}
     </div>

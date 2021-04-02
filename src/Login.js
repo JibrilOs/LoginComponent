@@ -14,6 +14,8 @@ function Login({
   handleLogout,
   hasAccount,
   setHasAccount,
+  name,
+  setName,
 }) {
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -25,20 +27,34 @@ function Login({
     handleSignup();
     return alert("user created");
   };
+  const handleName = (e) => setName(e.target.value);
   return (
     <section className="login">
       <div className="loginContainer">
+        {/* Name start */}
+        <label> Name</label>
+        <input
+          type="text"
+          required
+          autoFocus
+          value={name}
+          placeholder="firstname & surname"
+          onChange={handleName}
+        />
+
+        {/* name End */}
+
         {/*email Start*/}
-        <label>Username</label>
+        <label>Email</label>
         <input
           type="email"
           required
           value={email}
           onChange={handleChangeEmail}
-          autoFocus
         />
         <p className="errorMsg">{emailError}</p>
         {/*email End*/}
+
         {/*Password Start*/}
         <label>Password</label>
         <input
@@ -48,19 +64,11 @@ function Login({
           onChange={handleChangePassword}
         />
         <div className="errorMsg">{passwordError}</div>
-        {/*Password End*/}
-
-        {/* Button start */}
-        {/* <div className="btn">
-          <button type="submit" onClick={handleSubmit}>
-            Login
-          </button>
-        </div> */}
 
         <div className="btnContainer">
           {hasAccount ? (
             <>
-              <button onClick={handleLogin}>Sign In</button>
+              <button onClick={handleLogin}>Login</button>
               <p>
                 Don't have an account ?
                 <span onClick={() => setHasAccount(!hasAccount)}>Sign up</span>
@@ -68,10 +76,10 @@ function Login({
             </>
           ) : (
             <>
-              <button onClick={handleSubmit}>Sign Up</button>{" "}
+              <button onClick={handleSubmit}>Sign Up</button>
               <p>
                 Have an account
-                <span onClick={() => setHasAccount(!hasAccount)}>Sign in</span>
+                <span onClick={() => setHasAccount(!hasAccount)}>Login</span>
               </p>
             </>
           )}
