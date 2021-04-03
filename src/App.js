@@ -69,11 +69,13 @@ clearInputs();
             setPassword(err.message);
             break;
         }
+      
       });
   };
   //Logout function
   const handleLogout = () => {
     fire.auth().signOut();
+    clearInputs();
   };
   //function checkouts if user exists in firebase database
   const authListener = () => {
@@ -101,7 +103,7 @@ clearInputs();
           email={email}
           name={name}
         />
-      ) : hasAccount ? (
+      ) :
         <Login
           user={user}
           setUser={setUser}
@@ -119,25 +121,9 @@ clearInputs();
           name={name}
           setName={setName}
         />
-      ) : (
-        <Signup
-          user={user}
-          setUser={setUser}
-          email={email}
-          setEmail={setEmail}
-          emailError={emailError}
-          password={password}
-          setPassword={setPassword}
-          passwordError={passwordError}
-          handleLogin={handleLogin}
-          handleSignup={handleSignup}
-          handleLogout={handleLogout}
-          hasAccount={hasAccount}
-          setHasAccount={setHasAccount}
-          name={name}
-          setName={setName}
-        />
-      )}
+     
+        
+      }
     </div>
   );
 }

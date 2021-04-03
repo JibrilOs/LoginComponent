@@ -1,5 +1,6 @@
 import React from "react";
-
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import Signup from "./SignUp";
 function Login({
   user,
   setUser,
@@ -29,63 +30,90 @@ function Login({
   };
   const handleName = (e) => setName(e.target.value);
   return (
-    <section className="login">
-      <div className="loginContainer">
-        {/* Name start */}
-        {/* <label> Name</label>
-        <input
-          type="text"
-          required
-          autoFocus
-          value={name}
-          placeholder="firstname & surname"
-          onChange={handleName}
-        /> */}
+    <div>
+      {hasAccount ? (
+        <Router>
+          <Switch>
+            <Route
+              path="/"
+              exact
+              render={() => (
+                <section className="login">
+                  <div className="loginContainer">
+                    {/*email Start*/}
+                    <label>Email</label>
+                    <input
+                      type="email"
+                      required
+                      value={email}
+                      onChange={handleChangeEmail}
+                    />
+                    <p className="errorMsg">{emailError}</p>
+                    {/*email End*/}
 
-        {/* name End */}
+                    {/*Password Start*/}
+                    <label>Password</label>
+                    <input
+                      type="password"
+                      required
+                      value={password}
+                      onChange={handleChangePassword}
+                    />
+                    <div className="errorMsg">{passwordError}</div>
 
-        {/*email Start*/}
-        <label>Email</label>
-        <input
-          type="email"
-          required
-          value={email}
-          onChange={handleChangeEmail}
+                    <div className="btnContainer">
+                      {hasAccount ? (
+                        <>
+                          <button onClick={handleLogin}>Login</button>
+                          <p>
+                            Don't have an account ?
+                            <Link
+                              to="/signup"
+                              className="link"
+                              onClick={() => setHasAccount(!hasAccount)}
+                            >
+                              Sign up
+                            </Link>
+                          </p>
+                        </>
+                      ) : (
+                        <>
+                          <button onClick={handleSubmit}>Sign Up</button>
+                          <p>
+                            Have an account
+                            <span onClick={() => setHasAccount(!hasAccount)}>
+                              Login
+                            </span>
+                          </p>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </section>
+              )}
+            ></Route>
+          </Switch>
+        </Router>
+      ) : (
+        <Signup
+          user={user}
+          setUser={setUser}
+          email={email}
+          setEmail={setEmail}
+          emailError={emailError}
+          password={password}
+          setPassword={setPassword}
+          passwordError={passwordError}
+          handleLogin={handleLogin}
+          handleSignup={handleSignup}
+          handleLogout={handleLogout}
+          hasAccount={hasAccount}
+          setHasAccount={setHasAccount}
+          name={name}
+          setName={setName}
         />
-        <p className="errorMsg">{emailError}</p>
-        {/*email End*/}
-
-        {/*Password Start*/}
-        <label>Password</label>
-        <input
-          type="password"
-          required
-          value={password}
-          onChange={handleChangePassword}
-        />
-        <div className="errorMsg">{passwordError}</div>
-
-        <div className="btnContainer">
-          {hasAccount ? (
-            <>
-              <button onClick={handleLogin}>Login</button>
-              <p>
-                Don't have an account ?
-                <span onClick={() => setHasAccount(!hasAccount)}>Sign up</span>
-              </p>
-            </>
-          ) : (
-            <>
-              <button onClick={handleSubmit}>Sign Up</button>
-              <p>
-                Have an account
-                <span onClick={() => setHasAccount(!hasAccount)}>Login</span>
-              </p>
-            </>
-          )}
-        </div>
-      </div>
-    </section>
+      )}
+    </div>
   );
 }
 

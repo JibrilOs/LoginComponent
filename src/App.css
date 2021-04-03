@@ -111,16 +111,17 @@ button {
   color: #fff;
 }
 
-.login .loginContainer .btnContainer p span {
+.login .loginContainer .btnContainer p span , .login .loginContainer .btnContainer .link{
   color: yellow;
   font-weight: 500;
   letter-spacing: 0.5px;
   margin-left: 5px;
   cursor: pointer;
   transition: all 400ms ease-in-out;
+  text-decoration: none;
 }
 
-.login .loginContainer .btnContainer p span:hover {
+.login .loginContainer .btnContainer p span:hover, .login .loginContainer .btnContainer .link:hover {
   color: red;
 }
 
