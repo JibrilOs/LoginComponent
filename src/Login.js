@@ -35,7 +35,6 @@ function Login({
         <Router>
           <Switch>
             <Route
-              path="/"
               exact
               render={() => (
                 <section className="login">
