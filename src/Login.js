@@ -58,7 +58,7 @@ function Login({
                       value={password}
                       onChange={handleChangePassword}
                     />
-                    <div className="errorMsg">{passwordError}</div>
+                    <p className="errorMsg">{passwordError}</p>
 
                     <div className="btnContainer">
                       {hasAccount ? (
@@ -112,6 +112,7 @@ function Login({
           setName={setName}
         />
       )}
+      {passwordError}
     </div>
   );
 }

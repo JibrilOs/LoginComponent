@@ -31,8 +31,7 @@ function App() {
 
   //handles the password and email that are sent to firebase
   const handleLogin = () => {
-    clearErrors();
-
+   clearErrors();
     fire
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -44,7 +43,8 @@ function App() {
             setEmailError(err.message);
             break;
           case "auth/wrong-password":
-            setPassword(err.message);
+            setPasswordError(err.message);
+            console.log(err.message);
             break;
         }
       });
