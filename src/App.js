@@ -73,6 +73,7 @@ clearInputs();
   };
   //Logout function
   const handleLogout = () => {
+    clearInputs();
     fire.auth().signOut();
   };
   //function checkouts if user exists in firebase database
