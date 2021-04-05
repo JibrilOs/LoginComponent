@@ -55,8 +55,8 @@ loading,
           <p className="errorMsg">{passwordError}</p>
 
           <div className="btnContainer">
-            {hasAccount ? (
-              <>
+          
+          
                 <button onClick={handleLogin}>Login</button>
                 <p>
                   Don't have an account ?
@@ -68,16 +68,9 @@ loading,
                     Sign up
                   </Link>
                 </p>
-              </>
-            ) : (
-              <>
-                <button onClick={handleSubmit}>Sign Up</button>
-                <p>
-                  Have an account
-                  <span onClick={() => setHasAccount(!hasAccount)}>Login</span>
-                </p>
-              </>
-            )}
+          
+                
+         
           </div>
         </div>
       </section>

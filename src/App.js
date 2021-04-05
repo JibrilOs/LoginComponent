@@ -121,7 +121,7 @@ clearInputs();
           />
         ) : hasAccount ? (
           <Switch>
-            <Route >
+            <Route path="/" exact>
               <Login
                 loading={loading}
                 user={user}

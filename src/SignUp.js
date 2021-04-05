@@ -68,18 +68,6 @@ function Signup({
                 <div className="errorMsg">{passwordError}</div>
 
                 <div className="btnContainer">
-                  {hasAccount ? (
-                    <>
-                      <button onClick={handleLogin}>Login</button>
-                      <p>
-                        Don't have an account ?
-                        <span onClick={() => setHasAccount(!hasAccount)}>
-                          Sign up
-                        </span>
-                      </p>
-                    </>
-                  ) : (
-                    <>
                       <button onClick={handleSubmit}>Sign Up</button>
                       <p>
                         Have an account
@@ -94,13 +82,13 @@ function Signup({
                           Login
                         </Link>
                       </p>
-                    </>
-                  )}
+                 
+                
                 </div>
               </div>
-            </section>
+            </section>)
       
-  );
+
 }
 
 export default Signup;
