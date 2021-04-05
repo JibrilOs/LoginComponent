@@ -1,6 +1,7 @@
 /* eslint-disable default-case */
 import React, { useState, useEffect } from "react";
 import {fire, db} from "./Firebase";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 import Login from "./Login";
 import Signup from "./SignUp";
@@ -99,6 +100,7 @@ clearInputs();
    
       } else {
         setUser("");
+          setLoading(false); 
       }
     });
   };
@@ -108,36 +110,63 @@ clearInputs();
   }, []);
 
   return (
-    <div className="App">
-      {user ? (
-        <Hero
-          handleLogout={handleLogout}
-          user={user}
-          email={email}
-          name={name}
-        />
-      ) : (
-        <Login
-        loading={loading}
-          user={user}
-          setUser={setUser}
-          email={email}
-          setEmail={setEmail}
-          emailError={emailError}
-          password={password}
-          setPassword={setPassword}
-          passwordError={passwordError}
-          handleLogin={handleLogin}
-          handleSignup={handleSignup}
-          handleLogout={handleLogout}
-          hasAccount={hasAccount}
-          setHasAccount={setHasAccount}
-          name={name}
-          setName={setName}
-       
-        />
-      )}
-    </div>
+    <Router>
+      <div className="App">
+        {user ? (
+          <Hero
+            handleLogout={handleLogout}
+            user={user}
+            email={email}
+            name={name}
+          />
+        ) : hasAccount ? (
+          <Switch>
+            <Route >
+              <Login
+                loading={loading}
+                user={user}
+                setUser={setUser}
+                email={email}
+                setEmail={setEmail}
+                emailError={emailError}
+                password={password}
+                setPassword={setPassword}
+                passwordError={passwordError}
+                handleLogin={handleLogin}
+                handleSignup={handleSignup}
+                handleLogout={handleLogout}
+                hasAccount={hasAccount}
+                setHasAccount={setHasAccount}
+                name={name}
+                setName={setName}
+              />
+            </Route>
+          </Switch>
+        ) : (
+          <Route path="/Signin" exact>
+            <Signup
+              user={user}
+              setUser={setUser}
+              email={email}
+              setEmail={setEmail}
+              emailError={emailError}
+              password={password}
+              setPassword={setPassword}
+              passwordError={passwordError}
+              handleLogin={handleLogin}
+              handleSignup={handleSignup}
+              handleLogout={handleLogout}
+              hasAccount={hasAccount}
+              setHasAccount={setHasAccount}
+              name={name}
+              setName={setName}
+            />
+          </Route>
+        )}
+      </div>
+    </Router>
   );
 }
 export default App;
+
+

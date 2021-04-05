@@ -1,9 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 
 function Signup({
-  user,
-  setUser,
+
+
   email,
   setEmail,
   emailError,
@@ -12,7 +12,6 @@ function Signup({
   passwordError,
   handleLogin,
   handleSignup,
-  handleLogout,
   hasAccount,
   setHasAccount,
   name,
@@ -31,12 +30,7 @@ function Signup({
   };
   const handleName = (e) => setName(e.target.value);
   return (
-    <Router>
-      <Switch>
-        <Route
-          path="/Signup"
-          exact
-          render={() => (
+   
             <section className="login">
               <div className="loginContainer">
                 {/* Name start */}
@@ -105,10 +99,7 @@ function Signup({
                 </div>
               </div>
             </section>
-          )}
-        ></Route>
-      </Switch>
-    </Router>
+      
   );
 }
 
