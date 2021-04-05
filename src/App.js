@@ -16,6 +16,7 @@ function App() {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [hasAccount, setHasAccount] = useState(true);
+  const [loading,setLoading]=useState(false)
   const clearInputs = () => {
     // setUser("");
     setEmail("");
@@ -47,6 +48,7 @@ function App() {
             console.log(err.message);
             break;
         }
+         
       });
   };
   /// creates a user with password and email
@@ -79,18 +81,29 @@ clearInputs();
   };
   //function checkouts if user exists in firebase database
   const authListener = () => {
+   
+    //load something while the data of user is been fetched
+  setLoading(true);
     fire.auth().onAuthStateChanged((user) => {
+      
       if (user) {
         clearInputs();
-      db.collection("users").doc(user.uid).get().then(doc=>    setName(doc.data().name))
-  
+        db.collection("users")
+          .doc(user.uid)
+          .get()
+          .then((doc) => setName(doc.data().name));
         setUser(user);
+               setLoading(false); 
+
+   
+   
       } else {
         setUser("");
       }
     });
   };
   useEffect(() => {
+
     return authListener();
   }, []);
 
@@ -103,8 +116,9 @@ clearInputs();
           email={email}
           name={name}
         />
-      ) :
+      ) : (
         <Login
+        loading={loading}
           user={user}
           setUser={setUser}
           email={email}
@@ -120,10 +134,9 @@ clearInputs();
           setHasAccount={setHasAccount}
           name={name}
           setName={setName}
+       
         />
-     
-        
-      }
+      )}
     </div>
   );
 }

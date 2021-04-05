@@ -43,6 +43,7 @@
   font-family: "Nunito", sans-serif;
 }
 
+
 button {
   border: none;
   outline: none;
@@ -55,6 +56,8 @@ button {
   cursor: pointer;
 }
 
+.go{ display: none ;}
+.di{display: block;}
 .login {
   width: 100%;
   min-height: 100vh;

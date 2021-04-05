@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Signup from "./SignUp";
 function Login({
   user,
+loading,
   setUser,
   email,
   setEmail,
@@ -30,14 +31,14 @@ function Login({
   };
   const handleName = (e) => setName(e.target.value);
   return (
-    <div>
+    <div  className={loading? "go" :"di"} >
       {hasAccount ? (
         <Router>
           <Switch>
             <Route
               exact
               render={() => (
-                <section className="login">
+                <section className="login " >
                   <div className="loginContainer">
                     {/*email Start*/}
                     <label>Email</label>
