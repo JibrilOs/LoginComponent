@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/LoginComponent/static/css/main.8fdb48b7.chunk.css",
-    "main.js": "/LoginComponent/static/js/main.0ffc54c1.chunk.js",
-    "main.js.map": "/LoginComponent/static/js/main.0ffc54c1.chunk.js.map",
+    "main.css": "/LoginComponent/static/css/main.b85f7dca.chunk.css",
+    "main.js": "/LoginComponent/static/js/main.33e8c1a1.chunk.js",
+    "main.js.map": "/LoginComponent/static/js/main.33e8c1a1.chunk.js.map",
     "runtime-main.js": "/LoginComponent/static/js/runtime-main.1f1b4099.js",
     "runtime-main.js.map": "/LoginComponent/static/js/runtime-main.1f1b4099.js.map",
-    "static/js/2.4bb90886.chunk.js": "/LoginComponent/static/js/2.4bb90886.chunk.js",
-    "static/js/2.4bb90886.chunk.js.map": "/LoginComponent/static/js/2.4bb90886.chunk.js.map",
+    "static/js/2.b7580dc8.chunk.js": "/LoginComponent/static/js/2.b7580dc8.chunk.js",
+    "static/js/2.b7580dc8.chunk.js.map": "/LoginComponent/static/js/2.b7580dc8.chunk.js.map",
     "index.html": "/LoginComponent/index.html",
-    "static/css/main.8fdb48b7.chunk.css.map": "/LoginComponent/static/css/main.8fdb48b7.chunk.css.map",
-    "static/js/2.4bb90886.chunk.js.LICENSE.txt": "/LoginComponent/static/js/2.4bb90886.chunk.js.LICENSE.txt"
+    "static/css/main.b85f7dca.chunk.css.map": "/LoginComponent/static/css/main.b85f7dca.chunk.css.map",
+    "static/js/2.b7580dc8.chunk.js.LICENSE.txt": "/LoginComponent/static/js/2.b7580dc8.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.1f1b4099.js",
-    "static/js/2.4bb90886.chunk.js",
-    "static/css/main.8fdb48b7.chunk.css",
-    "static/js/main.0ffc54c1.chunk.js"
+    "static/js/2.b7580dc8.chunk.js",
+    "static/css/main.b85f7dca.chunk.css",
+    "static/js/main.33e8c1a1.chunk.js"
   ]
 }
